@@ -3,8 +3,8 @@ require('dotenv').config({ path: 'config/config.env' });
 const express = require('express');
 const app = express();
 // const cors = require('cors');
-// const helmet = require('helmet');
-// const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 // const YAML = require('yamljs');
 // const swaggerUi = require('swagger-ui-express');
 // const swaggerDocument = YAML.load('./swagger.yaml');
@@ -19,11 +19,11 @@ const donation = require('./routes/donation');
 
 // security middleware
 // app.use(cors());
-// app.use(helmet());
-// app.use(rateLimit({
-//     windowMs: 10 * 60 * 1000, // 10 minutes
-//     max: 20 // limit each IP to 20 requests per windowMs
-// }));
+app.use(helmet());
+app.use(rateLimit({
+    windowMs: 10 * 60 * 1000, // 20 minutes
+    max: 6 // limit each IP to 6 requests per windowMs
+}));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
