@@ -1,7 +1,7 @@
 {
-  "name": "fastjob-api",
+  "name": "creator-api",
   "version": "1.0.0",
-  "description": "API that takes an excel file as input, parses it and stores the data in the database.",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -9,17 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rohit1kumar/bug-free-potato.git"
+    "url": "git+https://github.com/rohit1kumar/creater.git"
   },
   "author": "Rohit Kumar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rohit1kumar/bug-free-potato.git/issues"
+    "url": "https://github.com/rohit1kumar/creater.git/issues"
   },
-  "homepage": "https://github.com/rohit1kumar/bug-free-potato.git#readme",
+  "homepage": "https://github.com/rohit1kumar/creater.git#readme",
   "dependencies": {
     "aws-sdk": "^2.1227.0",
-    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -29,12 +28,11 @@
     "helmet": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.1",
-    "multer": "^1.4.5-lts.1",
-    "swagger-ui-express": "^4.5.0",
-    "xlsx": "^0.18.5",
-    "yamljs": "^0.3.0"
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "swagger-ui-express": "^4.5.0",
+    "yamljs": "^0.3.0"
   }
 }
