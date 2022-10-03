@@ -11,16 +11,15 @@ const signup = asyncWrapper(async (req, res) => {
 
     let { username, password, profession } = req.body;
 
-    username = username.trim();
-    password = password.trim();
-    profession = profession.trim();
+    if (username) username = username.trim();
+    if (password) password = password.trim();
+    if (profession) profession = profession.trim();
 
+    if (!username || !password || !profession || !req.file) throw new ErrorHandler('All the fields are required, including avatar', 400);
     // check if user already exists
     const userFound = await User.findOne({ username });
 
     if (userFound) throw new ErrorHandler('Username is already taken', 400);
-
-    if (!req.file) throw new ErrorHandler('Please upload a avatar', 400);
 
     const s3 = await uploadToS3(req.file);
 
@@ -61,8 +60,10 @@ const signup = asyncWrapper(async (req, res) => {
 const login = asyncWrapper(async (req, res) => { //login a user
 
     let { username, password } = req.body;
-    username = username.trim();
-    password = password.trim();
+    if (username) username = username.trim();
+    if (password) password = password.trim();
+
+    if (!username || !password) throw new ErrorHandler('All the fields are required', 400);
 
     const user = await User.findOne({ username }).select("+password");
 
