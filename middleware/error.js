@@ -34,8 +34,7 @@ const errorMiddleware = async (err, req, res, next) => {
     }
 
     res.status(err.statusCode).json({
-        message: err.message,
-        stack: err.stack,
+        message: err.message
     });
 };
 
