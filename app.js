@@ -2,12 +2,8 @@ require('dotenv').config({ path: 'config/config.env' });
 
 const express = require('express');
 const app = express();
-// const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-// const YAML = require('yamljs');
-// const swaggerUi = require('swagger-ui-express');
-// const swaggerDocument = YAML.load('./swagger.yaml');
 const cookieParser = require('cookie-parser');
 
 const { errorMiddleware, notFound } = require('./middleware/error');
@@ -18,7 +14,6 @@ const user = require('./routes/user');
 const donation = require('./routes/donation');
 
 // security middleware
-// app.use(cors());
 app.use(helmet());
 app.use(rateLimit({
     windowMs: 10 * 60 * 1000, // 20 minutes
@@ -28,10 +23,9 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.get('/', (req, res) => {
-//     res.send('<p>Welcome to Pet API<br>Visit <a href="/docs">/docs</a> to see the API documentation</p>');
-// });
-// app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get('/', (req, res) => {
+    res.send('<p>Welcome to Creator API<br>Visit <a href="https://github.com/rohit1kumar/creater#readme">GitHub</a> to see the API documentation</p>');
+});
 
 app.use('/api/v1/user', user);
 app.use('/api/v1/donation', donation);
